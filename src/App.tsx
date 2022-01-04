@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ApolloProvider } from "@apollo/client";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import ReqAuth from "./components/ReqAuth";
+import { AuthProvider } from "./contexts/AuthContext";
+import client from "./graphqlClient";
+import Home from "./pages/Home";
+import LoginPage from "./pages/LoginPage";
+import RolesPage from "./pages/RolesPage";
+import UsersPage from "./pages/UsersPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ApolloProvider client={client}>
+      <AuthProvider>
+        <Routes>
+          <Route path="login" element={<LoginPage />} />
+          <Route
+            path="/"
+            element={
+              <ReqAuth>
+                <Home></Home>
+              </ReqAuth>
+            }
+          >
+            <Route
+              path="users"
+              element={
+                <ReqAuth>
+                  <UsersPage></UsersPage>
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="roles"
+              element={
+                <ReqAuth>
+                  <RolesPage></RolesPage>
+                </ReqAuth>
+              }
+            />
+          </Route>
+        </Routes>
+      </AuthProvider>
+    </ApolloProvider>
   );
 }
 
