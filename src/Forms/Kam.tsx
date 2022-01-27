@@ -37,7 +37,7 @@ const Kam = () => {
   
 
   return (
-    <Layout style={{backgroundColor:"#ccd0d321",marginTop:"-48%"}}>
+    <Layout style={{backgroundColor:"#ccd0d321"}}>
         <Content>
         <Header className='homeHeader'>
                     <div className="detail_header">

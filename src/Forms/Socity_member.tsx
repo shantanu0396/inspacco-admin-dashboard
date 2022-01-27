@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import * as faIcons from "react-icons/fa";
 import { SearchOutlined, PlusOutlined} from '@ant-design/icons';
 
-const Add_tasks = () => {
+const Add_socityMember = () => {
     const state = {
         value: 1,
       };
@@ -37,7 +37,7 @@ const Add_tasks = () => {
   
 
   return (
-    <Layout style={{backgroundColor:"#ccd0d321",marginTop:"-48%"}}>
+    <Layout style={{backgroundColor:"#ccd0d321"}}>
         <Content>
         <Header className='homeHeader'>
                     <div className="detail_header">
@@ -118,4 +118,4 @@ const Add_tasks = () => {
   );
 };
 
-export default Add_tasks
+export default Add_socityMember

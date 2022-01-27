@@ -17,6 +17,9 @@ import AddPartner from "./Forms/AddPartner";
 import EditServiceForm from "./Forms/EditServiceForm";
 import ViewTask from "./pages/viewTaskPage";
 import AddTask from "./Forms/AddTask";
+import Edit_socityData from "./pages/Edit_socityData"
+import Add_socityMember from "./Forms/Socity_member";
+import Kam from "./Forms/Kam"
 
 function App() {
   return (
@@ -119,6 +122,30 @@ function App() {
               element={
                 <ReqAuth>
                     <AddTask />
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="Edit_socityData"
+              element={
+                <ReqAuth>
+                    <Edit_socityData />
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="Add_socityMember"
+              element={
+                <ReqAuth>
+                    <Add_socityMember />
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="Kam"
+              element={
+                <ReqAuth>
+                    <Kam />
                 </ReqAuth>
               }
             />

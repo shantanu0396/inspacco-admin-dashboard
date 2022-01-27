@@ -80,7 +80,18 @@ export default function ViewSocity() {
         </>
         );
       }
-    }
+    },
+    {
+        title: "Task",
+        render: () => (
+          <Tooltip title="Edit record">
+            <Link to="/Edit_socityData" >
+              <Button ><EditOutlined style={{ marginLeft: "-6px" }} />
+              </Button> </Link>
+          </Tooltip>
+        )
+      }
+    
     
   ];
 
