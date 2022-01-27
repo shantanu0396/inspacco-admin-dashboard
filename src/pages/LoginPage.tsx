@@ -7,6 +7,7 @@ import styles from "./Login.module.css";
 import { get } from "lodash";
 import { AuthContext } from "../contexts/AuthContext";
 import { useLocation, useNavigate } from "react-router-dom";
+import logo from "../images/logo.png"
 
 export default function LoginPage() {
   const authContext = useContext(AuthContext);
@@ -50,15 +51,22 @@ export default function LoginPage() {
           authContext.set("user", get(loginRes, "data.logInWith.viewer"));
           navigate(get(location, "state.from.pathname", "/"), {
             replace: true,
+           
           });
+          
         }
+        
       }
     }
   }
 
   return (
+
     <div className={styles.page}>
       <div className={styles.loginBox}>
+      <div className="logo1 mb-4">
+                  <img src={logo} alt="inspacco-logo" className={styles.Logo} />
+                </div>
         <Form
           layout="vertical"
           form={form}
@@ -78,7 +86,7 @@ export default function LoginPage() {
               },
             ]}
           >
-            <Input placeholder="Enter mobile number" />
+            <Input placeholder="Enter mobile number"  />
           </Form.Item>
           <Form.Item
             name="otp"

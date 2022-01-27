@@ -11,6 +11,7 @@ import React, { useContext } from "react";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { LOGOUT } from "../graphql/mutations/logout";
+import HeaderPic from "../images/HeaderPic.png"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -39,9 +40,9 @@ export default function Home() {
   return (
     <>
       <Layout style={styles.wrapper}>
-        <Header>
+        <Header style={styles.Header}>
           <Row justify="space-between" align="middle">
-            <Col>Logo</Col>
+            <Col> <img src={HeaderPic} alt="inspacco-logo" style={styles.headerImg} /></Col>
             <Col>
               <Dropdown overlay={menu} placement="bottomRight" arrow>
                 <Avatar>{user?.user?.firstName?.charAt(0)}</Avatar>
@@ -62,15 +63,24 @@ export default function Home() {
                 icon={<UserOutlined />}
                 title="User Management"
               >
-                <Menu.Item key="1">
+                {/* <Menu.Item key="1">
                   <Link to="/users">Users</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link to="/roles">Roles</Link>
                 </Menu.Item>
-                <Menu.Item key="3">Sessions</Menu.Item>
+                <Menu.Item key="3">Sessions</Menu.Item> */}
+                <Menu.Item key="4">
+                  <Link to="/ViewServices">Services</Link>
+                </Menu.Item>
+                <Menu.Item key="5">
+                  <Link to="/ViewSocity">Society</Link>
+                </Menu.Item>
+                <Menu.Item key="6">
+                  <Link to="/ViewPartner">Partner</Link>
+                </Menu.Item>
               </SubMenu>
-              <SubMenu
+              {/* <SubMenu
                 key="sub2"
                 icon={<LaptopOutlined />}
                 title="Services"
@@ -79,7 +89,7 @@ export default function Home() {
                 key="sub3"
                 icon={<NotificationOutlined />}
                 title="Partners"
-              ></SubMenu>
+              ></SubMenu> */}
             </Menu>
           </Sider>
           <Content style={styles.content}>
@@ -98,4 +108,11 @@ const styles = {
   content: {
     padding: "20px",
   },
+  Header:{
+    background: "#adbac6"
+  },
+  headerImg:{
+      height: "50px",
+      marginLeft: "-47px"
+  }
 };

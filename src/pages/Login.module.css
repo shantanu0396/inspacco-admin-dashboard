@@ -12,3 +12,9 @@
   min-height: 200px;
   width: 300px;
 }
+
+.Logo {
+  vertical-align: middle;
+  border-style: none;
+  padding-bottom: 25px;
+}
