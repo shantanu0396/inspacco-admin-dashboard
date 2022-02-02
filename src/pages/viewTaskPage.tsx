@@ -33,7 +33,7 @@ export default function ViewTask() {
   const [addingService, setAddingService] = useState(null)
 
   useEffect(() => {
-    //setServiceId(id);
+    setServiceId(id);
     getTasks({
       serviceId,
     });

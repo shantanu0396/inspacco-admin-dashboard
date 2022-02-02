@@ -121,7 +121,7 @@
 // export default Add_socityMember
 
 import React, { useState } from 'react';
-import { Drawer,Space,Radio,Table, Tooltip } from 'antd';
+import { Drawer,Space,Radio,Table, Tooltip, Divider } from 'antd';
 import { DrawerProps } from 'antd/es/drawer';
 import { Input, Layout, Select } from "antd";
 import { Header } from 'antd/lib/layout/layout';
@@ -136,20 +136,33 @@ import { DocumentList } from '../models/DocumentList';
 import { GET_USER } from '../graphql/queries/user/getUser';
 import { SEARCH_USER } from '../graphql/queries/user/searchUsers';
 import { table } from 'console';
+import UsersPage from '../pages/UsersPage';
 const { Option } = Select;
 const Add_socityMember = () => {
   const [userName, setUser] = useState<string>();
+  const fruit =['apple','orange','cherry']
+  // const { data: userRes, loading } =
+  //   useQuery<DocumentList<"users", User>>(SEARCH_USER,{
+  //   });
+  //   console.log(userRes);
 
-  const { data: userRes, loading } =
-    useQuery<DocumentList<"users", User>>(SEARCH_USER,{
-    });
-    console.log(userRes);
+  const { data: userRes, loading } = useQuery<
+    DocumentList<'users', User>
+  >(SEARCH_USER);
+
+  console.log(userRes);
+
+  // function searchPersons(q: string) {
+  //     searchAllPersons({
+  //       q,
+  //     });
+  //   }
     // const onFetch = (data: User) => {
     //   console.log(data);
     //   //setUserId(data.id);
     //   data.firstName;
       
-    // }
+    // }  
     
     const state = {
         value: 1,
@@ -226,7 +239,7 @@ const Add_socityMember = () => {
     >
       <Form.Item 
         name="Person"
-        rules={[{ required: true, message: 'Please enter Summary !' }]}
+        //rules={[{ required: true, message: 'Please enter Summary !' }]}
        >
         {/* <Input size="large" placeholder="Person"  style={{marginTop:"30px",marginLeft:"90%"}} id="formIn"  onClick={showDrawer}/>
       <Drawer
@@ -256,12 +269,14 @@ const Add_socityMember = () => {
         size="middle"/>
       </Drawer> */}
       <Select
-    showSearch
-    style={{ width: 200 }}
+    style={{ width: 200, color:'black' }}
     placeholder="Search to Select"
-    optionFilterProp="children"
-    //value={}
-  >
+  > 
+    <Button>Add</Button>
+    <Divider style={{ margin: '4px 0' }} />
+    {dataSource?.map((item)=>{
+      return <Option value={item.id}>{`${item.firstName} ${item.lastName}`}</Option>
+    })}
     
   </Select>
       </Form.Item>
