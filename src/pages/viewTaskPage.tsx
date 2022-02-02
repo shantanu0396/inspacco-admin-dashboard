@@ -13,6 +13,8 @@ import { useLocation, } from "react-router-dom";
 import { useParams } from "react-router";
 import { KeyObject } from "crypto";
 import { STATUS } from "../constants/Common";
+import * as biIcons from "react-icons/bi"
+import "../styles/ViewServices.css"
 import { CREATE_SERVICE_TASK } from "../graphql/mutations/serviceTask/createServiceTask";
 
 export type TaskAttributes = {
@@ -33,7 +35,7 @@ export default function ViewTask() {
   const [addingService, setAddingService] = useState(null)
 
   useEffect(() => {
-    //setServiceId(id);
+    setServiceId(id);
     getTasks({
       serviceId,
     });
@@ -122,9 +124,18 @@ export default function ViewTask() {
   return (
     <>
       {/* <Link style={styles.Link} to="/AddTask"> */}
-        <Button style={styles.Button} onClick={() => {
+      <Link to='/ViewServices'><biIcons.BiArrowBack height="35px" width="35px" 
+        style={{border:"2px solid #0493cd",
+        height:"35px",
+        width:"35px", 
+        borderRadius:"50%", 
+        color:"black",
+        marginTop:"10px",
+        marginLeft:"10px"
+        }}/></Link>
+        <Button style={styles.Button1} className="addButton"  onClick={() => {
               onFetchData()
-            }}><PlusOutlined style={{ marginRight: "2px" }} /> Add</Button>
+            }}>+ Add</Button>
       {/* </Link> */}
       <Table style={styles.Table} key={serviceId}
        // dataSource={data?.service}
@@ -152,29 +163,29 @@ export default function ViewTask() {
             name="summary"
             rules={[{ required: true, message: 'Please enter Summary !' }]}
           >
-            <Input size="large" placeholder="Summary" style={{ marginTop: "30px" }} id="formIn" />
+            <Input size="large" placeholder="Summary" style={{ marginTop: "10px" }} id="formIn" />
           </Form.Item>
           <Form.Item
             name="Description"
             //rules={[{ required: true, message: 'Please enter Description!' }]}
           >
-            <Input size="large" placeholder="Description" style={{ marginTop: "30px" }} id="formIn" />
+            <Input size="large" placeholder="Description" style={{ marginTop: "10px" }} id="formIn" />
           </Form.Item>
           <Form.Item
             name="Reward points"
            // rules={[{ required: true, message: 'Please enter Rewards Points!' }]}
           >
-            <Input size="large" placeholder="Rewards Point" style={{ marginTop: "30px" }} id="formIn" />
+            <Input size="large" placeholder="Rewards Point" style={{ marginTop: "10px" }} id="formIn" />
           </Form.Item>
           <Form.Item
             name="frequency"
             //rules={[{ required: true, message: 'Frequency!' }]}
           >
-            <Input size="large" placeholder="Frequencye" style={{ marginTop: "30px" }} id="formIn" />
+            <Input size="large" placeholder="Frequencye" style={{ marginTop: "10px" }} id="formIn" />
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-            <Button type="primary" htmlType="submit" style={{ marginTop: "2%", marginLeft: "10%", width: "224px" }}>
+          <Form.Item wrapperCol={{ offset: 8, span: 8 }}>
+            <Button type="primary" htmlType="submit" style={{ marginTop: "2%", width: "150px" }}>
               Save
             </Button>
           </Form.Item>
@@ -192,8 +203,14 @@ const styles = {
   Table: {
     marginTop: "15px"
   },
-  Button: {
-    background: "#71b3c1"
+  Button1: {
+    background: "rgb(3, 56, 106)",
+    textDecoration:"none",
+    fontWeight:"500",
+   marginLeft:"850px",
+    color:"white",
+    fontSize:"15px",
+   
   },
   editButton: {
     marginLeft: "10px",

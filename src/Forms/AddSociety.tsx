@@ -7,7 +7,9 @@ import { useLazyQuery, useMutation } from "@apollo/client";
 import ISociety from "../models/Society"
 import { CREATE_SOCEITY } from "../graphql/mutations/society/createSociety";
 import { parseInt } from "lodash";
+import { Link, Route } from "react-router-dom";
 import { get } from "react-hook-form/dist/utils";
+import * as biIcons from "react-icons/bi";
 const AddSociety = () => {
   
     
@@ -33,10 +35,22 @@ const AddSociety = () => {
   return (
     <Layout style={{ backgroundColor: "#ccd0d321" }}>
       <Content>
-        <Header className='homeHeader' style={{ backgroundColor: "#e8edef" }}>
+        {/* <Header className='homeHeader' style={{ backgroundColor: "#e8edef" }}>
+        
           <div style={{ marginLeft: "35%", fontSize: "16px", fontWeight: "bold" }}>Society Details</div>
-        </Header>
-        <div className="formData">
+        </Header> */}
+        <Link to='/ViewSocity'><biIcons.BiArrowBack height="35px" width="35px" 
+        style={{border:"2px solid #0493cd",
+        height:"35px",
+        width:"35px", 
+        borderRadius:"50%", 
+        color:"black",
+        marginTop:"10px",
+        marginLeft:"10px"
+        }}/></Link>
+        <div className="formData" style={{ backgroundColor: "#e8edef", boxShadow: "7px 7px 5px 0px rgb(181 181 181)", paddingBottom: "10px" }}>
+        <div style={{ marginLeft: "40%", fontSize: "26px", fontWeight: "bold" }}>Society Details</div>
+        <div style={{ height: "5px", width: "190px", backgroundColor: "blue", marginLeft: "25rem" }}></div>
           <Form
             {...Layout} form={form}
             name="basic"
@@ -47,6 +61,7 @@ const AddSociety = () => {
             // onFinishFailed={onFinishFailed}
             autoComplete="off"
             className="AddSociety"
+            style={{marginTop:"20px"}}
           >
             <Form.Item
               name="name"

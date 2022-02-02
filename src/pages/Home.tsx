@@ -8,10 +8,11 @@ import { useMutation } from "@apollo/client";
 import { Avatar, Col, Dropdown, Layout, Menu, Row } from "antd";
 import { compact } from "lodash";
 import React, { useContext } from "react";
+import "../styles/home.css"
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 import { LOGOUT } from "../graphql/mutations/logout";
-import HeaderPic from "../images/HeaderPic.png"
+import HeaderPic from "../images/logowhite.png"
 
 const { Header, Footer, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -45,13 +46,13 @@ export default function Home() {
             <Col> <img src={HeaderPic} alt="inspacco-logo" style={styles.headerImg} /></Col>
             <Col>
               <Dropdown overlay={menu} placement="bottomRight" arrow>
-                <Avatar>{user?.user?.firstName?.charAt(0)}</Avatar>
+                <Avatar>{user?.user?.firstName?.charAt(0)}{user?.user?.lastName?.charAt(0)}</Avatar>
               </Dropdown>
             </Col>
           </Row>
         </Header>
         <Layout>
-          <Sider collapsible width={300}>
+          <Sider collapsible width={240} >
             <Menu
               mode="inline"
               defaultSelectedKeys={["1"]}
@@ -62,22 +63,23 @@ export default function Home() {
                 key="sub1"
                 icon={<UserOutlined />}
                 title="User Management"
+                style={{fontSize:"18px"}}
               >
                 <Menu.Item key="1">
-                  <Link to="/users">Users</Link>
+                  <Link to="/users" style={styles.menuitem} >Users</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
-                  <Link to="/roles">Roles</Link>
+                  <Link to="/roles" style={styles.menuitem}>Roles</Link>
                 </Menu.Item>
-                <Menu.Item key="3">Sessions</Menu.Item>
+                <Menu.Item key="3" style={styles.menuitem}>Sessions</Menu.Item>
                 <Menu.Item key="4">
-                  <Link to="/ViewServices">Services</Link>
+                  <Link to="/ViewServices" style={styles.menuitem}>Services</Link>
                 </Menu.Item>
                 <Menu.Item key="5">
-                  <Link to="/ViewSocity">Society</Link>
+                  <Link to="/ViewSocity" style={styles.menuitem}>Society</Link>
                 </Menu.Item>
                 <Menu.Item key="6">
-                  <Link to="/ViewPartner">Partner</Link>
+                  <Link to="/ViewPartner" style={styles.menuitem}>Partner</Link>
                 </Menu.Item>
               </SubMenu>
               {/* <SubMenu
@@ -108,11 +110,16 @@ const styles = {
   content: {
     padding: "20px",
   },
-  Header:{
-    background: "#adbac6"
+  Header: {
+    
+    background: "#03386A",
+    
   },
-  headerImg:{
-      height: "50px",
-      marginLeft: "-47px"
+  headerImg: {
+    height: "50px",
+    marginLeft: "-47px"
+  },
+  menuitem:{
+    fontSize:"16px"
   }
 };

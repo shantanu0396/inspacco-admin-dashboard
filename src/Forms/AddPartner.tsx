@@ -7,6 +7,8 @@ import { IPartner } from "../models/Partner";
 import { CREATE_PARTNER } from "../graphql/mutations/partner/createPartner";
 import { useMutation } from "@apollo/client";
 import { STATUS } from "../constants/Common";
+import * as biIcons from "react-icons/bi"
+import { Link } from "react-router-dom";
 const AddPartner = () => {
   const [form] = Form.useForm<IPartner>();
   const [savePartner] = useMutation(CREATE_PARTNER);
@@ -20,10 +22,22 @@ const AddPartner = () => {
   return (
     <Layout >
       <Content>
-        <Header className='homeHeader' style={{ backgroundColor: "#e8edef" }}>
+        {/* <Header className='homeHeader' style={{ backgroundColor: "#e8edef" }}>
           <div style={{ marginLeft: "45%", fontSize: "16px", fontWeight: "bold" }}>Partner  Details</div>
-        </Header>
-        <div className="formData">
+        </Header> */}
+         
+        <div className="formData"  style={{ backgroundColor: "#e8edef", boxShadow: "7px 7px 5px 0px rgb(181 181 181)", paddingBottom: "30px", paddingTop: "20px" }}>
+        <Link to='/ViewPartner'><biIcons.BiArrowBack height="35px" width="35px" 
+        style={{border:"2px solid #0493cd",
+        height:"35px",
+        width:"35px", 
+        borderRadius:"50%", 
+        color:"black",
+        marginTop:"10px",
+        marginLeft:"10px"
+        }}/></Link>
+        <div style={{ marginLeft: "35%", fontSize: "26px", fontWeight: "bold" }}>Partner Details</div>
+          <div style={{ height: "5px", width: "190px", backgroundColor: "blue", marginLeft: "22rem" }}></div>
           <Form
             wrapperCol={{ span: 9 }}
             initialValues={{ remember: true }}

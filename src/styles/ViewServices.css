@@ -1,0 +1,8 @@
+.EditButton{
+    width: 30px;
+}
+.addButton:hover{
+    -ms-transform: scale(1.0); /* IE 9 */
+    -webkit-transform: scale(1.0); /* Safari 3-8 */
+    transform: scale(1.1); 
+}
