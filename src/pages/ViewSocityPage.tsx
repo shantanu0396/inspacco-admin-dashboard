@@ -8,8 +8,11 @@ import { getSocietyMemberSubquery ,GET_SOCIETIES } from "../graphql/queries/soci
 import { DocumentList } from "../models/DocumentList";
 import ISociety from "../models/Society"
 import { render } from "@testing-library/react";
+import{useNavigate} from "react-router-dom";
 import{UPDATE_SOCIETY} from "../graphql/mutations/society/updateSociety"
 export default function ViewSocity() {
+  const navigate = useNavigate();
+  const [serviceEditId, setServiceEditId] = useState<string>();
 
   const [form] = Form.useForm();
   const [isEditing, setIsEditing] = useState(false);
@@ -54,6 +57,12 @@ export default function ViewSocity() {
       })
     }
 
+    const onViewClick = async (data: any) => {
+      console.log(data.objectId);
+      navigate(`/Edit_socityData/${data.objectId}`);
+       // data['id']=serviceTaskId;
+    };
+
   const columns = [
     {
       title: " Name",
@@ -82,15 +91,18 @@ export default function ViewSocity() {
       }
     },
     {
-        title: "Task",
-        render: () => (
-          <Tooltip title="Edit record">
-            <Link to="/Edit_socityData" >
-              <Button ><EditOutlined style={{ marginLeft: "-6px" }} />
-              </Button> </Link>
-          </Tooltip>
-        )
-      }
+      title: "Task",
+      render: (data:any) => (
+        <Tooltip title="View Task">
+          {/* <Link to={`/viewTask`}  > */}
+          <Button style={styles.editButton} onClick={() => {
+              onViewClick(data)
+            }} ><EditOutlined style={{ marginLeft: "-6px" }} />
+            </Button>
+            {/* </Link> */}
+        </Tooltip>
+      )
+    },
     
     
   ];

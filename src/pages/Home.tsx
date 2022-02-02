@@ -63,13 +63,13 @@ export default function Home() {
                 icon={<UserOutlined />}
                 title="User Management"
               >
-                {/* <Menu.Item key="1">
+                <Menu.Item key="1">
                   <Link to="/users">Users</Link>
                 </Menu.Item>
                 <Menu.Item key="2">
                   <Link to="/roles">Roles</Link>
                 </Menu.Item>
-                <Menu.Item key="3">Sessions</Menu.Item> */}
+                <Menu.Item key="3">Sessions</Menu.Item>
                 <Menu.Item key="4">
                   <Link to="/ViewServices">Services</Link>
                 </Menu.Item>

@@ -19,8 +19,9 @@ import ViewTask from "./pages/viewTaskPage";
 import AddTask from "./Forms/AddTask";
 import Edit_socityData from "./pages/Edit_socityData"
 import Add_socityMember from "./Forms/Socity_member";
-import Kam from "./Forms/Kam"
-
+import Kam from "./Forms/Kam";
+import Add_NewSocietyMember from "./Forms/Add_socityMember";
+import SocietyAmenities from "./Forms/Add_SocietyAmenities";
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -126,7 +127,7 @@ function App() {
               }
             />
             <Route
-              path="Edit_socityData"
+              path="Edit_socityData/:id"
               element={
                 <ReqAuth>
                     <Edit_socityData />
@@ -146,6 +147,22 @@ function App() {
               element={
                 <ReqAuth>
                     <Kam />
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="Add_NewSocietyMember"
+              element={
+                <ReqAuth>
+                    <Add_NewSocietyMember />
+                </ReqAuth>
+              }
+            />
+            <Route
+              path="SocietyAmenities"
+              element={
+                <ReqAuth>
+                    <SocietyAmenities />
                 </ReqAuth>
               }
             />

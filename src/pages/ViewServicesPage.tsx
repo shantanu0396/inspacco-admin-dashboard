@@ -66,14 +66,14 @@ const navigate = useNavigate();
     })
   }
 
-  const onFetchTask = (data: IServiceTask) => {
-    data['objectId']=serviceId;
-    console.log(data);
-    setServiceTaskId(data.id);
-     form.setFieldsValue({
-      id: data.id
-    })
-  }
+  // const onFetchTask = (data: IServiceTask) => {
+  //   data['objectId']=serviceId;
+  //   console.log(data);
+  //   setServiceTaskId(data.id);
+  //    form.setFieldsValue({
+  //     id: data.id
+  //   })
+  // }
 
   const onUpdateTask = async (data: any) => {
     console.log(data.objectId);
